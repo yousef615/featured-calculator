@@ -1,0 +1,119 @@
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333333;
+}
+.calculatorProject {
+    background-image: url("\\360_F_127102793_T3xjCOEUKV5vy3WgNMxpDRnEMSFFHh5b.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+.calculator {
+    background-color: #202020;
+    width: 400px;
+    height: 640px;
+    outline: 5px solid #202020e6;
+    border-radius: 10px;
+}
+.results {
+    background-color: #252323 !important;
+    width: calc(100%- 5px);
+    color: rgba(255, 255, 255, 0.268) ;
+    height: 36%;
+    letter-spacing:0.1ch;
+    padding-left:5px;
+    border-bottom: 0.1px solid rgb(63 62 62);
+}
+.history {
+    color: rgb(174, 174, 174);
+    width: 100%;
+    height: 70%;
+    padding: 0;
+    margin: 0;
+    overflow: auto;
+}
+.history ul {
+    list-style: none;
+
+}
+
+.Show {
+    font-size:x-large;
+    height: 25%;
+}
+.Show > input {
+    font-size: large;
+    height: 50%;
+    color: rgb(255, 255, 255) !important;
+    letter-spacing: 0.9px;
+}
+.current {
+    background-color: #252323;
+    height: 50%;
+    width: calc(100% - 10px);
+    overflow-y:auto;
+    overflow-wrap:break-word;
+    border: none;
+    
+}
+.current:focus {
+    outline: none;
+}
+.result {
+    color: rgb(206, 206, 206);
+    font-size:x-large;
+    height: 50%;
+    direction:ltr;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+
+.operations {
+    margin: 0;
+    display: grid;
+    row-gap: 5px;
+    margin: 5px 0px 0px 13px;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+ /* grid-template-rows: [line2] repeat(3, 1fr) ; */
+ 
+
+}
+button {
+    border-radius: 100%;
+    background-color: #333333;
+    color: white;
+    font-size: 175%; 
+    height: 77px;
+    width: 85px;
+    border: 0px solid #333333;
+}
+button:active {
+    background-color: rgba(0, 0, 255, 0) ;
+}
+button.del {
+    background-color: #a6a6a6;
+}
+button.del:active {
+ background-color: #626161;
+}
+
+button.orange {
+    background-color: #f09a36;
+}
+button.orange:active {
+    background-color: #f0993622;
+}
+.three {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(3, 123px);
+    margin: 5px 0px 10px 10px;
+}
+.three button {
+    border-radius: 200px;
+    width: auto;
+}
