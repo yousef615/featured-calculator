@@ -1,9 +1,11 @@
 import "./App.css";
-import { evaluate } from "mathjs";
+import { Parser } from "expr-eval";
+
 import { useState } from "react";
 import "./Calculator.css";
 
 function App() {
+  const parser = new Parser();
   const [mathOperation, setMathOperation] = useState("");
   const [mathResult, setMathResult] = useState("");
 
@@ -77,14 +79,20 @@ function App() {
       e.nativeEvent.data === null &&
       (!Number(lastInput) || lastInput === "0")
     ) {
-      setMathResult(evaluate(mathOperation.slice(0, inputValue.length - 1)));
+      setMathResult(
+        parser.evaluate(mathOperation.slice(0, inputValue.length - 1))
+      );
     }
     if (!Number(lastInput) && !Number(prevLastInput)) {
-      setMathResult(evaluate(mathOperation.slice(0, inputValue.length - 2)));
+      setMathResult(
+        parser.evaluate(mathOperation.slice(0, inputValue.length - 2))
+      );
     } else if (!Number(lastInput)) {
-      setMathResult(evaluate(mathOperation.slice(0, inputValue.length - 1)));
+      setMathResult(
+        parser.evaluate(mathOperation.slice(0, inputValue.length - 1))
+      );
     } else {
-      setMathResult(evaluate(inputValue));
+      setMathResult(parser.evaluate(inputValue));
     }
   };
 
@@ -122,7 +130,7 @@ function App() {
       }
     }
     if (Number(+e.target.value) || e.target.value === "0") {
-      setMathResult(evaluate(mathOperation + +e.target.value));
+      setMathResult(parser.evaluate(mathOperation + +e.target.value));
     }
     if (lastInput === "=") {
       console.log("wooow");
@@ -133,17 +141,25 @@ function App() {
   const handleDelete = () => {
     setMathOperation(mathOperation.slice(0, mathOperation.length - 1));
     if (Number(localLastInput) && !Number(localPrevLastInput)) {
-      setMathResult(evaluate(mathOperation.slice(0, mathOperation.length - 2)));
+      setMathResult(
+        parser.evaluate(mathOperation.slice(0, mathOperation.length - 2))
+      );
     } else if (Number(localLastInput) && Number(localPrevLastInput)) {
-      setMathResult(evaluate(mathOperation.slice(0, mathOperation.length - 1)));
+      setMathResult(
+        parser.evaluate(mathOperation.slice(0, mathOperation.length - 1))
+      );
     } else if (
       localLastInput === "0" &&
       !Number(localPrevLastInput) &&
       localPrevLastInput !== "0"
     ) {
-      setMathResult(evaluate(mathOperation.slice(0, mathOperation.length - 2)));
+      setMathResult(
+        parser.evaluate(mathOperation.slice(0, mathOperation.length - 2))
+      );
     } else if (localLastInput === "0") {
-      setMathResult(evaluate(mathOperation.slice(0, mathOperation.length - 1)));
+      setMathResult(
+        parser.evaluate(mathOperation.slice(0, mathOperation.length - 1))
+      );
     }
   };
   //################# Handle Clearing
